@@ -1,0 +1,2 @@
+class AdmonitionType < ApplicationRecord
+end
