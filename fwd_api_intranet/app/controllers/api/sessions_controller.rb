@@ -2,7 +2,7 @@
 
 class Api::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
-
+ before_action :authenticate_user!, only: [:logout]
   def singup
     @user = User.new(user_params)
     if @user.save
@@ -27,9 +27,12 @@ end
 
 def logout
 
+
 end
 
 private
+
+se
 
 def user_params
     params.permit(:username, :email, :password, :password_confirmation, :identification, :number, :age)

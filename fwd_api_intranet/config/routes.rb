@@ -10,8 +10,8 @@ Rails.application.routes.draw do
        registration: 'signup'
      },
      controllers: {
-       sessions: 'users/sessions',
-       registrations: 'users/registrations'
+       sessions: 'api/sessions',
+       registrations: 'api/registrations'
      }
 
 
@@ -19,7 +19,7 @@ Rails.application.routes.draw do
       resources :users
       resources :internal_communications
       resources :articles
-      resources :sessions, only: [:create, :destroy]
+      resources :sessions, only: [:create, :destroy] #añadir edit mas adelante 
       resources :registrations, only: [:create]
 
     end
