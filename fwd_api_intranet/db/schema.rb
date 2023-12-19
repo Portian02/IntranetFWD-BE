@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_15_143210) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_18_200742) do
   create_table "admonition_types", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -54,6 +54,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_15_143210) do
     t.string "name"
     t.text "description"
     t.date "date"
+    t.binary "document"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -106,6 +107,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_15_143210) do
     t.index ["user_id"], name: "index_justifications_on_user_id"
   end
 
+  create_table "jwt_denylist", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "jti", null: false
+    t.datetime "exp", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["jti"], name: "index_jwt_denylist_on_jti"
+  end
+
   create_table "status_types", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "description"
     t.datetime "created_at", null: false
@@ -124,7 +133,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_15_143210) do
     t.string "username", default: "", null: false
     t.string "number", default: "", null: false
     t.string "email", default: "", null: false
-    t.string "age", default: "", null: false
+    t.date "borndate", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -132,7 +141,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_15_143210) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "type_user_id", null: false
+    t.string "jti", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["jti"], name: "index_users_on_jti", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["type_user_id"], name: "index_users_on_type_user_id"
   end
