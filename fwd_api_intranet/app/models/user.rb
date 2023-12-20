@@ -2,8 +2,7 @@ class User < ApplicationRecord
 
   include Devise::JWT::RevocationStrategies::JTIMatcher
 
-
-
+ enum type_user_id: [:student, :admin, :teacher]
   validates :identification, presence: true
   validates :username, presence: true
   validates :number, presence: true

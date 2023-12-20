@@ -9,9 +9,10 @@
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
     origins 'http://localhost:3001'
-    resource '*',
-    headers: ["Authorization"],
-    expose: ["Authorization"],
+    resource '/api/*',
+    headers: %w(Authorizatio),
+     methods: :any,
+    expose: %w(Authorizatio),
     methods: [:get, :post, :put, :patch, :delete, :options, :head],
     max_age: 600
   end
