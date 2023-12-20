@@ -6,7 +6,7 @@ class Users::SessionsController < Devise::SessionsController
   def singup
     @user = User.new(user_params)
     if @user.save
-        # new_token = encode_token(@user.email)
+        # new_token = encode_token(@user.email)#
         render json: {message: "User created"} status: :created
     else
         render json: @user.errors, status: :unprocessable_entity
