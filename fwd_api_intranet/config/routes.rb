@@ -1,25 +1,25 @@
 Rails.application.routes.draw do
 
   get 'private/test'
-
+  
   devise_for :users,
-     path: '',
-     path_names: {
-       sign_in: 'login',
-       sign_out: 'logout',
-       registration: 'signup'
-     },
-     controllers: {
-       sessions: 'api/sessions',
-       registrations: 'api/registrations'
-     }
+  path: '',
+  path_names: {
+    sign_in: 'login',
+    sign_out: 'logout',
+    registration: 'signup'
+  },
+  controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
+  }
 
 
     namespace :api do
       resources :users
       resources :internal_communications
       resources :articles
-      resources :sessions, only: [:create, :destroy] #añadir edit mas adelante 
+      resources :sessions, only: [:create, :destroy] #añadir edit mas adelante
       resources :registrations, only: [:create]
 
     end

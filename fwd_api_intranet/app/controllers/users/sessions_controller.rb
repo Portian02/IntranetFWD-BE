@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Api::SessionsController < Devise::SessionsController
+class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
  before_action :authenticate_user!, only: [:logout]
   def singup
