@@ -1,32 +1,28 @@
 Rails.application.routes.draw do
 
-  get 'private/test'
-  
-  devise_for :users,
-  path: '',
-  path_names: {
-    sign_in: 'login',
-    sign_out: 'logout',
-    registration: 'signup'
-  },
-  controllers: {
-    sessions: 'users/sessions',
-    registrations: 'users/registrations'
-  }
+  namespace :api do
+    resources :users
+    resources :internal_communications
+    resources :private
+    resources :articles
+    resources :type_users
+    # resources :sessions, only: [:create, :destroy] #añadir edit mas adelante
+    # resources :registrations, only: [:create]
+  end
 
+  namespace :auth do
 
-    namespace :api do
-      resources :users
-      resources :internal_communications
-      resources :articles
-      resources :sessions, only: [:create, :destroy] #añadir edit mas adelante
-      resources :registrations, only: [:create]
+  end
 
-    end
-
-
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+   devise_for :users,
+    path: '',
+    path_names: {
+      sign_in: 'login',
+      sign_out: 'logout',
+      registration: 'signup'
+    },
+    controllers: {
+      sessions: 'auth/sessions',
+      registrations: 'auth/registrations'
+    }
 end

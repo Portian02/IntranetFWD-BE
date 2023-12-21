@@ -8,11 +8,10 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins 'http://localhost:3001'
+    origins 'http://localhost:3000'
     resource '*',
-    headers: ["Authorization"],
-    expose: ["Authorization"],
+    headers: ['Authorization'],
     methods: [:get, :post, :put, :patch, :delete, :options, :head],
-    max_age: 600
+    credentials: true # this is crucial in order to include cookies headers
   end
 end

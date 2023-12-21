@@ -1,13 +1,17 @@
 # frozen_string_literal: true
 
-class Users::SessionsController < Devise::SessionsController
+class Auth::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
- before_action :authenticate_user!, only: [:logout]
+ # before_action :authenticate_user!, only: [:logout]
+
+
+  respond_to :json
+
   def singup
     @user = User.new(user_params)
     if @user.save
-        # new_token = encode_token(@user.email)#
-        render json: {message: "User created"} status: :created
+        # new_token = encode_token(@user.email)
+        render json: {message: "User created"}, status: :created
     else
         render json: @user.errors, status: :unprocessable_entity
     end
@@ -25,17 +29,19 @@ def login
     end
 end
 
-def logout
+
+ private
+  def respond_with(resource, _opts = {})
+    render json: resource
+  end
+  def respond_to_on_destroy
+    render json: { message: "Logged out." }
+  end
 
 
-end
-
-private
-
-se
 
 def user_params
-    params.permit(:username, :email, :password, :password_confirmation, :identification, :number, :age)
+    params.permit(:username, :email, :password, :password_confirmation, :identification, :number, :borndate, :type_user_id, :role)
 end
 
 

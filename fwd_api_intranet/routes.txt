@@ -1,41 +1,19 @@
                                   Prefix Verb   URI Pattern                                                                                       Controller#Action
-                            private_test GET    /private/test(.:format)                                                                           private#test
-                        new_user_session GET    /login(.:format)                                                                                  users/sessions#new
-                            user_session POST   /login(.:format)                                                                                  users/sessions#create
-                    destroy_user_session DELETE /logout(.:format)                                                                                 users/sessions#destroy
+                        new_user_session GET    /login(.:format)                                                                                  auth/sessions#new
+                            user_session POST   /login(.:format)                                                                                  auth/sessions#create
+                    destroy_user_session DELETE /logout(.:format)                                                                                 auth/sessions#destroy
                        new_user_password GET    /password/new(.:format)                                                                           devise/passwords#new
                       edit_user_password GET    /password/edit(.:format)                                                                          devise/passwords#edit
                            user_password PATCH  /password(.:format)                                                                               devise/passwords#update
                                          PUT    /password(.:format)                                                                               devise/passwords#update
                                          POST   /password(.:format)                                                                               devise/passwords#create
-                cancel_user_registration GET    /signup/cancel(.:format)                                                                          users/registrations#cancel
-                   new_user_registration GET    /signup/sign_up(.:format)                                                                         users/registrations#new
-                  edit_user_registration GET    /signup/edit(.:format)                                                                            users/registrations#edit
-                       user_registration PATCH  /signup(.:format)                                                                                 users/registrations#update
-                                         PUT    /signup(.:format)                                                                                 users/registrations#update
-                                         DELETE /signup(.:format)                                                                                 users/registrations#destroy
-                                         POST   /signup(.:format)                                                                                 users/registrations#create
-                               api_users GET    /api/users(.:format)                                                                              api/users#index
-                                         POST   /api/users(.:format)                                                                              api/users#create
-                                api_user GET    /api/users/:id(.:format)                                                                          api/users#show
-                                         PATCH  /api/users/:id(.:format)                                                                          api/users#update
-                                         PUT    /api/users/:id(.:format)                                                                          api/users#update
-                                         DELETE /api/users/:id(.:format)                                                                          api/users#destroy
-             api_internal_communications GET    /api/internal_communications(.:format)                                                            api/internal_communications#index
-                                         POST   /api/internal_communications(.:format)                                                            api/internal_communications#create
-              api_internal_communication GET    /api/internal_communications/:id(.:format)                                                        api/internal_communications#show
-                                         PATCH  /api/internal_communications/:id(.:format)                                                        api/internal_communications#update
-                                         PUT    /api/internal_communications/:id(.:format)                                                        api/internal_communications#update
-                                         DELETE /api/internal_communications/:id(.:format)                                                        api/internal_communications#destroy
-                            api_articles GET    /api/articles(.:format)                                                                           api/articles#index
-                                         POST   /api/articles(.:format)                                                                           api/articles#create
-                             api_article GET    /api/articles/:id(.:format)                                                                       api/articles#show
-                                         PATCH  /api/articles/:id(.:format)                                                                       api/articles#update
-                                         PUT    /api/articles/:id(.:format)                                                                       api/articles#update
-                                         DELETE /api/articles/:id(.:format)                                                                       api/articles#destroy
-                            api_sessions POST   /api/sessions(.:format)                                                                           api/sessions#create
-                             api_session DELETE /api/sessions/:id(.:format)                                                                       api/sessions#destroy
-                       api_registrations POST   /api/registrations(.:format)                                                                      api/registrations#create
+                cancel_user_registration GET    /signup/cancel(.:format)                                                                          auth/registrations#cancel
+                   new_user_registration GET    /signup/sign_up(.:format)                                                                         auth/registrations#new
+                  edit_user_registration GET    /signup/edit(.:format)                                                                            auth/registrations#edit
+                       user_registration PATCH  /signup(.:format)                                                                                 auth/registrations#update
+                                         PUT    /signup(.:format)                                                                                 auth/registrations#update
+                                         DELETE /signup(.:format)                                                                                 auth/registrations#destroy
+                                         POST   /signup(.:format)                                                                                 auth/registrations#create
            rails_postmark_inbound_emails POST   /rails/action_mailbox/postmark/inbound_emails(.:format)                                           action_mailbox/ingresses/postmark/inbound_emails#create
               rails_relay_inbound_emails POST   /rails/action_mailbox/relay/inbound_emails(.:format)                                              action_mailbox/ingresses/relay/inbound_emails#create
            rails_sendgrid_inbound_emails POST   /rails/action_mailbox/sendgrid/inbound_emails(.:format)                                           action_mailbox/ingresses/sendgrid/inbound_emails#create
