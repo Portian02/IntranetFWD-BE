@@ -4,10 +4,11 @@ Rails.application.routes.draw do
     resources :users
     resources :internal_communications
     resources :private
-    resources :articles
+    resources :calendar_events
     resources :type_users
     # resources :sessions, only: [:create, :destroy] #añadir edit mas adelante
     # resources :registrations, only: [:create]
+
   end
 
   namespace :auth do
@@ -19,8 +20,10 @@ Rails.application.routes.draw do
     path_names: {
       sign_in: 'login',
       sign_out: 'logout',
-      registration: 'signup'
+      registration: 'signup',
+
     },
+
     controllers: {
       sessions: 'auth/sessions',
       registrations: 'auth/registrations'

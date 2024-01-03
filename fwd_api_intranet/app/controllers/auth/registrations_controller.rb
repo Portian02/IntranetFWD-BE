@@ -15,22 +15,6 @@ class Auth::RegistrationsController < Devise::RegistrationsController
 
   # ...
 
-  protected
-
-  def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
-    # Add any additional permitted parameters for sign up here
-  end
-
-  def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
-    # Add any additional permitted parameters for account update here
-  end
-
-  # ...
-end
-
-
   # GET /resource/sign_up
   # def new
   #   super
@@ -86,4 +70,17 @@ end
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+
+  def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
+    # Add any additional permitted parameters for sign up here
+  end
+
+  def configure_account_update_params
+    devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
+    # Add any additional permitted parameters for account update here
+  end
+
+#   # # ...
 end

@@ -1,4 +1,34 @@
                                   Prefix Verb   URI Pattern                                                                                       Controller#Action
+                               api_users GET    /api/users(.:format)                                                                              api/users#index
+                                         POST   /api/users(.:format)                                                                              api/users#create
+                                api_user GET    /api/users/:id(.:format)                                                                          api/users#show
+                                         PATCH  /api/users/:id(.:format)                                                                          api/users#update
+                                         PUT    /api/users/:id(.:format)                                                                          api/users#update
+                                         DELETE /api/users/:id(.:format)                                                                          api/users#destroy
+             api_internal_communications GET    /api/internal_communications(.:format)                                                            api/internal_communications#index
+                                         POST   /api/internal_communications(.:format)                                                            api/internal_communications#create
+              api_internal_communication GET    /api/internal_communications/:id(.:format)                                                        api/internal_communications#show
+                                         PATCH  /api/internal_communications/:id(.:format)                                                        api/internal_communications#update
+                                         PUT    /api/internal_communications/:id(.:format)                                                        api/internal_communications#update
+                                         DELETE /api/internal_communications/:id(.:format)                                                        api/internal_communications#destroy
+                       api_private_index GET    /api/private(.:format)                                                                            api/private#index
+                                         POST   /api/private(.:format)                                                                            api/private#create
+                             api_private GET    /api/private/:id(.:format)                                                                        api/private#show
+                                         PATCH  /api/private/:id(.:format)                                                                        api/private#update
+                                         PUT    /api/private/:id(.:format)                                                                        api/private#update
+                                         DELETE /api/private/:id(.:format)                                                                        api/private#destroy
+                     api_calendar_events GET    /api/calendar_events(.:format)                                                                    api/calendar_events#index
+                                         POST   /api/calendar_events(.:format)                                                                    api/calendar_events#create
+                      api_calendar_event GET    /api/calendar_events/:id(.:format)                                                                api/calendar_events#show
+                                         PATCH  /api/calendar_events/:id(.:format)                                                                api/calendar_events#update
+                                         PUT    /api/calendar_events/:id(.:format)                                                                api/calendar_events#update
+                                         DELETE /api/calendar_events/:id(.:format)                                                                api/calendar_events#destroy
+                          api_type_users GET    /api/type_users(.:format)                                                                         api/type_users#index
+                                         POST   /api/type_users(.:format)                                                                         api/type_users#create
+                           api_type_user GET    /api/type_users/:id(.:format)                                                                     api/type_users#show
+                                         PATCH  /api/type_users/:id(.:format)                                                                     api/type_users#update
+                                         PUT    /api/type_users/:id(.:format)                                                                     api/type_users#update
+                                         DELETE /api/type_users/:id(.:format)                                                                     api/type_users#destroy
                         new_user_session GET    /login(.:format)                                                                                  auth/sessions#new
                             user_session POST   /login(.:format)                                                                                  auth/sessions#create
                     destroy_user_session DELETE /logout(.:format)                                                                                 auth/sessions#destroy

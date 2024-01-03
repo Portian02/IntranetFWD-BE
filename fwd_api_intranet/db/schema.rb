@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_20_212029) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_22_162114) do
   create_table "admonition_types", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -64,9 +64,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_20_212029) do
     t.text "description"
     t.string "url"
     t.bigint "documents_type_id", null: false
+    t.bigint "justification_id", null: false
+    t.bigint "admonition_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "admonitions_id", null: false
+    t.index ["admonition_id"], name: "index_documents_storages_on_admonition_id"
+    t.index ["admonitions_id"], name: "index_documents_storages_on_admonitions_id"
     t.index ["documents_type_id"], name: "index_documents_storages_on_documents_type_id"
+    t.index ["justification_id"], name: "index_documents_storages_on_justification_id"
   end
 
   create_table "documents_types", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -99,10 +105,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_20_212029) do
     t.string "responsable_id"
     t.bigint "user_id"
     t.bigint "justification_types_id"
-    t.bigint "documents_storage_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["documents_storage_id"], name: "index_justifications_on_documents_storage_id"
     t.index ["justification_types_id"], name: "index_justifications_on_justification_types_id"
     t.index ["user_id"], name: "index_justifications_on_user_id"
   end
@@ -154,9 +158,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_20_212029) do
   add_foreign_key "admonitions", "users"
   add_foreign_key "attendances", "status_types"
   add_foreign_key "attendances", "users"
+  add_foreign_key "documents_storages", "admonitions"
+  add_foreign_key "documents_storages", "admonitions", column: "admonitions_id"
   add_foreign_key "documents_storages", "documents_types"
+  add_foreign_key "documents_storages", "justifications"
   add_foreign_key "internal_communications", "users"
-  add_foreign_key "justifications", "documents_storages"
   add_foreign_key "justifications", "justification_types", column: "justification_types_id"
   add_foreign_key "justifications", "users"
   add_foreign_key "users", "type_users"
