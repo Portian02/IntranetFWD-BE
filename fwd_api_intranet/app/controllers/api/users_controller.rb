@@ -33,28 +33,34 @@ class Api::UsersController < ApplicationController
     end
   end
 
+
+  def update_password
+    @user = User.params[:id] #HACER EL CAMNIO DEL PARAMETRO
+
+    if params[:user][:password].present? && params[:user][:password_confirmation].present?
+      if @user.update(user_params)
+        render json: { message: 'Contraseña actualizada con éxito.' }
+      else
+        render json: { error: 'Error al actualizar la contraseña.' }, status: :unprocessable_entity
+      end
+    else
+      render json: { error: 'Ingresa una contraseña y confirmación válidas.' }, status: :unprocessable_entity
+    end
+  end
+
   # DELETE /tasks/1
   def destroy
     @user.destroy
-     render json: {message: "user deleted successfully"}, status: :ok
+    render json: { message: 'Usuario eliminado exitosamente' }, status: :ok
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      begin
-        @user = User.find(params[:id])
-      rescue => error
-        Rails.logger.error("********** user not found **********")
-        @error_message = {
-          message: "user not found! the ID in not present in the database"
-        }
-        render json: @error_message, status: :not_found
 
-
-      end
-
-    end
+  def set_user
+    @user = User.find(1) #HACER EL CAMNIO DEL PARAMETRO
+  rescue ActiveRecord::RecordNotFound
+    render json: { error: 'Usuario no encontrado' }, status: :not_found
+  end
 
     # Only allow a list of trusted parameters through.
     def user_params
