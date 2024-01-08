@@ -57,6 +57,6 @@ class Api::InternalCommunicationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def internal_communication_params
-      params.require(:internal_communication).permit(:title, :content, :date)
+      params.require(:internal_communication).permit(:title, :content, :date, :user_id)
     end
 end

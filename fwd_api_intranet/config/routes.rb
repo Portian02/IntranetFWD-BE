@@ -6,14 +6,19 @@ Rails.application.routes.draw do
     resources :private
     resources :calendar_events
     resources :type_users
+
     # resources :sessions, only: [:create, :destroy] #añadir edit mas adelante
     # resources :registrations, only: [:create]
 
   end
 
   namespace :auth do
-
+    devise_for :users, controllers: {
+      registrations: 'auth/registrations'
+    }
   end
+
+
 
    devise_for :users,
     path: '',
@@ -26,6 +31,10 @@ Rails.application.routes.draw do
 
     controllers: {
       sessions: 'auth/sessions',
-      registrations: 'auth/registrations'
+      registrations: 'auth/registrations',
+
     }
+
+
+
 end

@@ -35,8 +35,9 @@ class Api::UsersController < ApplicationController
 
 
   def update_password
-    @user = User.params[:id] #HACER EL CAMNIO DEL PARAMETRO
 
+    @user = User.params[:id] #HACER EL CAMBIO DEL PARAMETRO
+  
     if params[:user][:password].present? && params[:user][:password_confirmation].present?
       if @user.update(user_params)
         render json: { message: 'Contraseña actualizada con éxito.' }
@@ -57,7 +58,7 @@ class Api::UsersController < ApplicationController
   private
 
   def set_user
-    @user = User.find(1) #HACER EL CAMNIO DEL PARAMETRO
+    @user = User.params[:id] #HACER EL CAMNIO DEL PARAMETRO
   rescue ActiveRecord::RecordNotFound
     render json: { error: 'Usuario no encontrado' }, status: :not_found
   end

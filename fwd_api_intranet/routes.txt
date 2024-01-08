@@ -29,6 +29,21 @@
                                          PATCH  /api/type_users/:id(.:format)                                                                     api/type_users#update
                                          PUT    /api/type_users/:id(.:format)                                                                     api/type_users#update
                                          DELETE /api/type_users/:id(.:format)                                                                     api/type_users#destroy
+                   new_auth_user_session GET    /auth/users/sign_in(.:format)                                                                     auth/sessions#new
+                       auth_user_session POST   /auth/users/sign_in(.:format)                                                                     auth/sessions#create
+               destroy_auth_user_session DELETE /auth/users/sign_out(.:format)                                                                    auth/sessions#destroy
+                  new_auth_user_password GET    /auth/users/password/new(.:format)                                                                auth/passwords#new
+                 edit_auth_user_password GET    /auth/users/password/edit(.:format)                                                               auth/passwords#edit
+                      auth_user_password PATCH  /auth/users/password(.:format)                                                                    auth/passwords#update
+                                         PUT    /auth/users/password(.:format)                                                                    auth/passwords#update
+                                         POST   /auth/users/password(.:format)                                                                    auth/passwords#create
+           cancel_auth_user_registration GET    /auth/users/cancel(.:format)                                                                      auth/registrations#cancel
+              new_auth_user_registration GET    /auth/users/sign_up(.:format)                                                                     auth/registrations#new
+             edit_auth_user_registration GET    /auth/users/edit(.:format)                                                                        auth/registrations#edit
+                  auth_user_registration PATCH  /auth/users(.:format)                                                                             auth/registrations#update
+                                         PUT    /auth/users(.:format)                                                                             auth/registrations#update
+                                         DELETE /auth/users(.:format)                                                                             auth/registrations#destroy
+                                         POST   /auth/users(.:format)                                                                             auth/registrations#create
                         new_user_session GET    /login(.:format)                                                                                  auth/sessions#new
                             user_session POST   /login(.:format)                                                                                  auth/sessions#create
                     destroy_user_session DELETE /logout(.:format)                                                                                 auth/sessions#destroy
