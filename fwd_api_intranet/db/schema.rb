@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_08_213801) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_09_175207) do
   create_table "admonition_types", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -49,10 +49,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_08_213801) do
   end
 
   create_table "calendar_events", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name"
+    t.string "title"
     t.text "description"
-    t.date "date"
-    t.binary "document"
+    t.text "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -66,9 +65,11 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_08_213801) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "admonitions_id", null: false
+    t.bigint "justifications_id", null: false
     t.index ["admonitions_id"], name: "index_documents_storages_on_admonitions_id"
     t.index ["documents_type_id"], name: "index_documents_storages_on_documents_type_id"
     t.index ["justification_id"], name: "index_documents_storages_on_justification_id"
+    t.index ["justifications_id"], name: "index_documents_storages_on_justifications_id"
   end
 
   create_table "documents_types", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -80,8 +81,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_08_213801) do
 
   create_table "internal_communications", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title"
-    t.string "content"
-    t.date "date"
+    t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
@@ -156,6 +156,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_08_213801) do
   add_foreign_key "documents_storages", "admonitions", column: "admonitions_id"
   add_foreign_key "documents_storages", "documents_types"
   add_foreign_key "documents_storages", "justifications"
+  add_foreign_key "documents_storages", "justifications", column: "justifications_id"
   add_foreign_key "internal_communications", "users"
   add_foreign_key "justifications", "justification_types", column: "justification_types_id"
   add_foreign_key "justifications", "users"
