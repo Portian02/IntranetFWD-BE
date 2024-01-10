@@ -1,8 +1,13 @@
 # frozen_string_literal: true
 
-class Api::RegistrationsController < Devise::RegistrationsController
+class Auth::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+
+  respond_to :json
+
+
+
 
 
   def create
@@ -11,6 +16,8 @@ class Api::RegistrationsController < Devise::RegistrationsController
     sign_in(resource_name, resource)
     render json: resource
   end
+
+  # ...
 
   # GET /resource/sign_up
   # def new
@@ -67,4 +74,17 @@ class Api::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+
+  def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
+    # Add any additional permitted parameters for sign up here
+  end
+
+  def configure_account_update_params
+    devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
+    # Add any additional permitted parameters for account update here
+  end
+
+#   # # ...
 end

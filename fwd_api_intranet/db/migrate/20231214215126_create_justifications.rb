@@ -6,7 +6,7 @@ class CreateJustifications < ActiveRecord::Migration[7.0]
       t.string :responsable_id
       t.references :user, foreign_key: true
       t.references :justification_types, foreign_key: true
-      t.references :documents_storage, foreign_key: true
+     
       t.timestamps
     end
   end

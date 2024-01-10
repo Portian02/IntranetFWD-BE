@@ -5,7 +5,6 @@ class CreateDocumentsStorages < ActiveRecord::Migration[7.0]
       t.text :description
       t.string :url
       t.references :documents_type, null: false, foreign_key: true
-
       t.timestamps
     end
   end

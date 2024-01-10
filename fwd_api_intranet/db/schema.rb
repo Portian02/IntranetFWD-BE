@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_18_200742) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_09_175207) do
   create_table "admonition_types", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -24,11 +24,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_18_200742) do
     t.string "responsable_id"
     t.bigint "user_id"
     t.bigint "admonition_types_id"
-    t.bigint "documents_storage_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["admonition_types_id"], name: "index_admonitions_on_admonition_types_id"
-    t.index ["documents_storage_id"], name: "index_admonitions_on_documents_storage_id"
     t.index ["user_id"], name: "index_admonitions_on_user_id"
   end
 
@@ -51,10 +49,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_18_200742) do
   end
 
   create_table "calendar_events", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name"
+    t.string "title"
     t.text "description"
-    t.date "date"
-    t.binary "document"
+    t.text "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -64,9 +61,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_18_200742) do
     t.text "description"
     t.string "url"
     t.bigint "documents_type_id", null: false
+    t.bigint "justification_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "admonitions_id", null: false
+    t.bigint "justifications_id", null: false
+    t.index ["admonitions_id"], name: "index_documents_storages_on_admonitions_id"
     t.index ["documents_type_id"], name: "index_documents_storages_on_documents_type_id"
+    t.index ["justification_id"], name: "index_documents_storages_on_justification_id"
+    t.index ["justifications_id"], name: "index_documents_storages_on_justifications_id"
   end
 
   create_table "documents_types", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -78,8 +81,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_18_200742) do
 
   create_table "internal_communications", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title"
-    t.string "content"
-    t.date "date"
+    t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
@@ -99,10 +101,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_18_200742) do
     t.string "responsable_id"
     t.bigint "user_id"
     t.bigint "justification_types_id"
-    t.bigint "documents_storage_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["documents_storage_id"], name: "index_justifications_on_documents_storage_id"
     t.index ["justification_types_id"], name: "index_justifications_on_justification_types_id"
     t.index ["user_id"], name: "index_justifications_on_user_id"
   end
@@ -142,6 +142,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_18_200742) do
     t.datetime "updated_at", null: false
     t.bigint "type_user_id", null: false
     t.string "jti", null: false
+    t.integer "role"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["jti"], name: "index_users_on_jti", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -149,13 +150,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_18_200742) do
   end
 
   add_foreign_key "admonitions", "admonition_types", column: "admonition_types_id"
-  add_foreign_key "admonitions", "documents_storages"
   add_foreign_key "admonitions", "users"
   add_foreign_key "attendances", "status_types"
   add_foreign_key "attendances", "users"
+  add_foreign_key "documents_storages", "admonitions", column: "admonitions_id"
   add_foreign_key "documents_storages", "documents_types"
+  add_foreign_key "documents_storages", "justifications"
+  add_foreign_key "documents_storages", "justifications", column: "justifications_id"
   add_foreign_key "internal_communications", "users"
-  add_foreign_key "justifications", "documents_storages"
   add_foreign_key "justifications", "justification_types", column: "justification_types_id"
   add_foreign_key "justifications", "users"
   add_foreign_key "users", "type_users"
