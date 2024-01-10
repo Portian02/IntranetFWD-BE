@@ -1,0 +1,2 @@
+class Admonition < ApplicationRecord
+end
