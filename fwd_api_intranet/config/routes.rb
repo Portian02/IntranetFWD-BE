@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :private
     resources :calendar_events
     resources :type_users
+    resources :announcements
 
     # resources :sessions, only: [:create, :destroy] #añadir edit mas adelante
     # resources :registrations, only: [:create]
