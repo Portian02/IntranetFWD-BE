@@ -35,6 +35,12 @@
                                          PATCH  /api/announcements/:id(.:format)                                                                  api/announcements#update
                                          PUT    /api/announcements/:id(.:format)                                                                  api/announcements#update
                                          DELETE /api/announcements/:id(.:format)                                                                  api/announcements#destroy
+       api_internal_communications_users GET    /api/internal_communications_users(.:format)                                                      api/internal_communications_users#index
+                                         POST   /api/internal_communications_users(.:format)                                                      api/internal_communications_users#create
+        api_internal_communications_user GET    /api/internal_communications_users/:id(.:format)                                                  api/internal_communications_users#show
+                                         PATCH  /api/internal_communications_users/:id(.:format)                                                  api/internal_communications_users#update
+                                         PUT    /api/internal_communications_users/:id(.:format)                                                  api/internal_communications_users#update
+                                         DELETE /api/internal_communications_users/:id(.:format)                                                  api/internal_communications_users#destroy
                    new_auth_user_session GET    /auth/users/sign_in(.:format)                                                                     auth/sessions#new
                        auth_user_session POST   /auth/users/sign_in(.:format)                                                                     auth/sessions#create
                destroy_auth_user_session DELETE /auth/users/sign_out(.:format)                                                                    auth/sessions#destroy

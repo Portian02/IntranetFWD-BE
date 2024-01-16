@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_09_163401) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_16_201245) do
   create_table "admonition_types", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -84,6 +84,13 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_09_163401) do
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_internal_communications_on_user_id"
+  end
+
+  create_table "internal_communications_users", id: false, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "internal_communication_id", null: false
+    t.index ["internal_communication_id"], name: "index_internal_communications_users_on_internal_communication_id"
+    t.index ["user_id"], name: "index_internal_communications_users_on_user_id"
   end
 
   create_table "justification_types", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
