@@ -23,7 +23,7 @@ class User < ApplicationRecord
   # :recoverable, :validatable, :jwt_authenticatable,
   # jwt_revocation_strategy: self
 
-
+ 
 
 
 
