@@ -29,6 +29,18 @@
                                          PATCH  /api/type_users/:id(.:format)                                                                     api/type_users#update
                                          PUT    /api/type_users/:id(.:format)                                                                     api/type_users#update
                                          DELETE /api/type_users/:id(.:format)                                                                     api/type_users#destroy
+                       api_announcements GET    /api/announcements(.:format)                                                                      api/announcements#index
+                                         POST   /api/announcements(.:format)                                                                      api/announcements#create
+                        api_announcement GET    /api/announcements/:id(.:format)                                                                  api/announcements#show
+                                         PATCH  /api/announcements/:id(.:format)                                                                  api/announcements#update
+                                         PUT    /api/announcements/:id(.:format)                                                                  api/announcements#update
+                                         DELETE /api/announcements/:id(.:format)                                                                  api/announcements#destroy
+                         api_admonitions GET    /api/admonitions(.:format)                                                                        api/admonitions#index
+                                         POST   /api/admonitions(.:format)                                                                        api/admonitions#create
+                          api_admonition GET    /api/admonitions/:id(.:format)                                                                    api/admonitions#show
+                                         PATCH  /api/admonitions/:id(.:format)                                                                    api/admonitions#update
+                                         PUT    /api/admonitions/:id(.:format)                                                                    api/admonitions#update
+                                         DELETE /api/admonitions/:id(.:format)                                                                    api/admonitions#destroy
                    new_auth_user_session GET    /auth/users/sign_in(.:format)                                                                     auth/sessions#new
                        auth_user_session POST   /auth/users/sign_in(.:format)                                                                     auth/sessions#create
                destroy_auth_user_session DELETE /auth/users/sign_out(.:format)                                                                    auth/sessions#destroy

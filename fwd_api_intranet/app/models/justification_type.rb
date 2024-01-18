@@ -1,2 +1,5 @@
 class JustificationType < ApplicationRecord
-end
+    
+        validates :name, presence: true, length: { maximum: 255 }
+        validates :description, presence: true
+        

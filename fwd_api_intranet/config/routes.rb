@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :type_users
     resources :announcements
     resources :admonitions 
+    resources :justifications
 
     # resources :sessions, only: [:create, :destroy] #añadir edit mas adelante
     # resources :registrations, only: [:create]

@@ -1,9 +1,10 @@
 # app/controllers/admonitions_controller.rb
-class AdmonitionsController < ApplicationController
+class  Api::AdmonitionsController < ApplicationController
     before_action :set_admonition, only: %i[show edit update destroy]
   
     def index
-      @admonitions = Admonition.all
+      @admonition = Admonition.all
+      render json: @admonition
     end
   
     def show
@@ -13,15 +14,16 @@ class AdmonitionsController < ApplicationController
       @admonition = Admonition.new
     end
   
+    
     def create
-      @admonition = Admonition.new(admonition_params)
-  
-      if @admonition.save
-        redirect_to @admonition, notice: 'Amonestación creada exitosamente.'
-      else
-        render :new
+        @admonition = Admonition.new(admonition_params)
+    
+        if  @admonition.save
+          render json:  @admonition, status: :created
+        else
+          render json:  @admonition.errors, status: :unprocessable_entity
+        end
       end
-    end
   
     def edit
     end
@@ -46,7 +48,7 @@ class AdmonitionsController < ApplicationController
     end
   
     def admonition_params
-      params.require(:admonition).permit(:admonition_type_id, :user_id, :date, :responsable_id, :status_admonition)
+      params.require(:admonition).permit(:admonition_types_id, :user_id, :date, :responsable_id, :status_admonition)
     end
   end
   
