@@ -10,7 +10,7 @@
               api_internal_communication GET    /api/internal_communications/:id(.:format)                                                        api/internal_communications#show
                                          PATCH  /api/internal_communications/:id(.:format)                                                        api/internal_communications#update
                                          PUT    /api/internal_communications/:id(.:format)                                                        api/internal_communications#update
-                                         DELETE /api/internal_communications/:id(.:format)                                                        api/internal_communications#destroy
+                                         DELETE    (.:format)                                                        api/internal_communications#destroy
                        api_private_index GET    /api/private(.:format)                                                                            api/private#index
                                          POST   /api/private(.:format)                                                                            api/private#create
                              api_private GET    /api/private/:id(.:format)                                                                        api/private#show
