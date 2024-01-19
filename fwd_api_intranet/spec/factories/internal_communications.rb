@@ -1,7 +1,8 @@
+
 FactoryBot.define do
   factory :internal_communication do
-    title { "MyString" }
-    content { "MyString" }
-    date { "2023-12-14" }
+    title { "Sample Title" }
+    content { "Sample Content" }
+    association :user, factory: :user # Asegúrate de tener un factory para el modelo User
   end
 end
