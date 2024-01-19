@@ -7,7 +7,10 @@ Rails.application.routes.draw do
     resources :calendar_events
     resources :type_users
     resources :announcements
+    resources :admonitions 
+    resources :justifications
     resources :internal_communications_users
+
     # resources :sessions, only: [:create, :destroy] #añadir edit mas adelante
     # resources :registrations, only: [:create]
 

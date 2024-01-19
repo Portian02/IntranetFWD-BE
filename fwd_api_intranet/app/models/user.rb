@@ -3,7 +3,9 @@ class User < ApplicationRecord
   :recoverable, :rememberable, :validatable,
   :jwt_authenticatable, jwt_revocation_strategy: JwtDenylist
 
+
   include Devise::JWT::RevocationStrategies::JTIMatcher
+
 
   enum role: [:student, :admin, :teacher ]
   validates :identification, presence: true, uniqueness: true
@@ -14,7 +16,7 @@ class User < ApplicationRecord
   validates :role, presence: true
   validates :type_user_id, presence: true
   validates :jti, presence: true, uniqueness: true
-
   belongs_to :type_user
+
 
 end

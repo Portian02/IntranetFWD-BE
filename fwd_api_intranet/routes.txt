@@ -35,6 +35,12 @@
                                          PATCH  /api/announcements/:id(.:format)                                                                  api/announcements#update
                                          PUT    /api/announcements/:id(.:format)                                                                  api/announcements#update
                                          DELETE /api/announcements/:id(.:format)                                                                  api/announcements#destroy
+                         api_admonitions GET    /api/admonitions(.:format)                                                                        api/admonitions#index
+                                         POST   /api/admonitions(.:format)                                                                        api/admonitions#create
+                          api_admonition GET    /api/admonitions/:id(.:format)                                                                    api/admonitions#show
+                                         PATCH  /api/admonitions/:id(.:format)                                                                    api/admonitions#update
+                                         PUT    /api/admonitions/:id(.:format)                                                                    api/admonitions#update
+                                         DELETE /api/admonitions/:id(.:format)                                                                    api/admonitions#destroy
        api_internal_communications_users GET    /api/internal_communications_users(.:format)                                                      api/internal_communications_users#index
                                          POST   /api/internal_communications_users(.:format)                                                      api/internal_communications_users#create
         api_internal_communications_user GET    /api/internal_communications_users/:id(.:format)                                                  api/internal_communications_users#show
