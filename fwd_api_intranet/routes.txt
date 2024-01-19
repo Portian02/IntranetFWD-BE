@@ -10,7 +10,7 @@
               api_internal_communication GET    /api/internal_communications/:id(.:format)                                                        api/internal_communications#show
                                          PATCH  /api/internal_communications/:id(.:format)                                                        api/internal_communications#update
                                          PUT    /api/internal_communications/:id(.:format)                                                        api/internal_communications#update
-                                         DELETE /api/internal_communications/:id(.:format)                                                        api/internal_communications#destroy
+                                         DELETE    (.:format)                                                        api/internal_communications#destroy
                        api_private_index GET    /api/private(.:format)                                                                            api/private#index
                                          POST   /api/private(.:format)                                                                            api/private#create
                              api_private GET    /api/private/:id(.:format)                                                                        api/private#show
@@ -41,6 +41,12 @@
                                          PATCH  /api/admonitions/:id(.:format)                                                                    api/admonitions#update
                                          PUT    /api/admonitions/:id(.:format)                                                                    api/admonitions#update
                                          DELETE /api/admonitions/:id(.:format)                                                                    api/admonitions#destroy
+       api_internal_communications_users GET    /api/internal_communications_users(.:format)                                                      api/internal_communications_users#index
+                                         POST   /api/internal_communications_users(.:format)                                                      api/internal_communications_users#create
+        api_internal_communications_user GET    /api/internal_communications_users/:id(.:format)                                                  api/internal_communications_users#show
+                                         PATCH  /api/internal_communications_users/:id(.:format)                                                  api/internal_communications_users#update
+                                         PUT    /api/internal_communications_users/:id(.:format)                                                  api/internal_communications_users#update
+                                         DELETE /api/internal_communications_users/:id(.:format)                                                  api/internal_communications_users#destroy
                    new_auth_user_session GET    /auth/users/sign_in(.:format)                                                                     auth/sessions#new
                        auth_user_session POST   /auth/users/sign_in(.:format)                                                                     auth/sessions#create
                destroy_auth_user_session DELETE /auth/users/sign_out(.:format)                                                                    auth/sessions#destroy

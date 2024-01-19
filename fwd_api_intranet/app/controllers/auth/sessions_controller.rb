@@ -3,11 +3,7 @@
 class Auth::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
  # before_action :authenticate_user!, only: [:logout]
-
-
   respond_to :json
-
-
 
   def singup
     @user = User.new(user_params)
@@ -18,21 +14,21 @@ class Auth::SessionsController < Devise::SessionsController
         render json: @user.errors, status: :unprocessable_entity
     end
 
-end
+  end
 
-def login
-    @user = User.find_by(email: params[:email])
-    # new_token = encode_token(@user.email)
+  def login
+      @user = User.find_by(email: params[:email])
+      # new_token = encode_token(@user.email)
 
-    if !!@user && @user.authenticate(params[:password])
-        render json: {message: "user is logged in"}, status: 201
-    else
-        render json: {message: "invalid credentials"}, status: :unauthorized
-    end
-end
+      if !!@user && @user.authenticate(params[:password])
+          render json: {message: "user is logged in"}, status: 201
+      else
+          render json: {message: "invalid credentials"}, status: :unauthorized
+      end
+  end
 
 
- private
+  private
   def respond_with(resource, _opts = {})
     render json: resource
   end
@@ -41,11 +37,21 @@ end
     render json: { message: "Logged out." }
   end
 
-
-
-def user_params
+  def user_params
     params.permit(:username, :email, :password, :password_confirmation, :identification, :number, :borndate, :type_user_id, :role)
-end
+  end
+  
+  def respond_with(resource, _opts = {})
+    render json: resource
+  end
+
+  def respond_to_on_destroy
+    render json: { message: "Logged out." }
+  end
+
+
+
+
 
 
   # GET /resource/sign_in
