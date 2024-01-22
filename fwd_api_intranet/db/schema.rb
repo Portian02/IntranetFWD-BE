@@ -65,6 +65,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_16_201245) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "admonitions_id", null: false
+    t.bigint "justifications_id", null: false
     t.index ["admonitions_id"], name: "index_documents_storages_on_admonitions_id"
     t.index ["documents_type_id"], name: "index_documents_storages_on_documents_type_id"
     t.index ["justifications_id"], name: "index_documents_storages_on_justifications_id"
@@ -134,15 +135,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_16_201245) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "user_admonitions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "admonition_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["admonition_id"], name: "index_user_admonitions_on_admonition_id"
-    t.index ["user_id"], name: "index_user_admonitions_on_user_id"
-  end
-
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "identification", default: "", null: false
     t.string "username", default: "", null: false
@@ -168,13 +160,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_16_201245) do
   add_foreign_key "admonitions", "users"
   add_foreign_key "attendances", "status_types"
   add_foreign_key "attendances", "users"
-  add_foreign_key "documents_storages", "admonitions", column: "admonitions_id"
   add_foreign_key "documents_storages", "documents_types"
-  add_foreign_key "documents_storages", "justifications", column: "justifications_id"
   add_foreign_key "internal_communications", "users"
   add_foreign_key "justifications", "justification_types", column: "justification_types_id"
   add_foreign_key "justifications", "users"
-  add_foreign_key "user_admonitions", "admonitions"
-  add_foreign_key "user_admonitions", "users"
   add_foreign_key "users", "type_users"
 end
