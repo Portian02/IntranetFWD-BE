@@ -49,10 +49,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_16_201245) do
   end
 
   create_table "calendar_events", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name"
+    t.string "title"
     t.text "description"
-    t.date "date"
-    t.binary "document"
+    t.text "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -65,7 +64,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_16_201245) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "admonitions_id", null: false
-    t.bigint "justifications_id", null: false
+    t.bigint "justifications_id"
     t.index ["admonitions_id"], name: "index_documents_storages_on_admonitions_id"
     t.index ["documents_type_id"], name: "index_documents_storages_on_documents_type_id"
     t.index ["justifications_id"], name: "index_documents_storages_on_justifications_id"
@@ -80,8 +79,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_16_201245) do
 
   create_table "internal_communications", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title"
-    t.string "content"
-    t.date "date"
+    t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false

@@ -1,13 +1,17 @@
+# spec/factories/users.rb
 FactoryBot.define do
   factory :user do
     sequence(:identification) { |n| "ID#{n}" }
     sequence(:username) { |n| "user#{n}" }
-    sequence(:number) { |n| n }
-    sequence(:email) { |n| Faker::Internet.email }
-    borndate { Faker::Date.birthday }
+    sequence(:number) { |n| "Number#{n}" }
+    sequence(:email) { |n| "user#{n}@example.com" }
+    borndate { Faker::Date.birthday(min_age: 18, max_age: 65) }
     password { 'password123' }
     password_confirmation { 'password123' }
-    role { :student }
+
+    trait :student do
+      role { :student }
+    end
 
     trait :admin do
       role { :admin }
@@ -16,8 +20,5 @@ FactoryBot.define do
     trait :teacher do
       role { :teacher }
     end
-
-    factory :admin_user, traits: [:admin]
-    factory :teacher_user, traits: [:teacher]
   end
 end
