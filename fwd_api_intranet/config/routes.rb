@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :admonitions 
     resources :justifications
     resources :internal_communications_users
+    resources :documents_storages
 
     # resources :sessions, only: [:create, :destroy] #añadir edit mas adelante
     # resources :registrations, only: [:create]
