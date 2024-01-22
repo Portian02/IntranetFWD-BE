@@ -57,6 +57,6 @@ class Api::CalendarEventsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def calendar_event_params
-      params.require(:calendar_event).permit(:name, :description, :date, :document)
+      params.require(:calendar_event).permit(:title, :description, :url)
     end
 end

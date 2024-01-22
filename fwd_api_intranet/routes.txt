@@ -10,7 +10,7 @@
               api_internal_communication GET    /api/internal_communications/:id(.:format)                                                        api/internal_communications#show
                                          PATCH  /api/internal_communications/:id(.:format)                                                        api/internal_communications#update
                                          PUT    /api/internal_communications/:id(.:format)                                                        api/internal_communications#update
-                                         DELETE    (.:format)                                                        api/internal_communications#destroy
+                                         DELETE /api/internal_communications/:id(.:format)                                                        api/internal_communications#destroy
                        api_private_index GET    /api/private(.:format)                                                                            api/private#index
                                          POST   /api/private(.:format)                                                                            api/private#create
                              api_private GET    /api/private/:id(.:format)                                                                        api/private#show
@@ -41,6 +41,12 @@
                                          PATCH  /api/admonitions/:id(.:format)                                                                    api/admonitions#update
                                          PUT    /api/admonitions/:id(.:format)                                                                    api/admonitions#update
                                          DELETE /api/admonitions/:id(.:format)                                                                    api/admonitions#destroy
+                      api_justifications GET    /api/justifications(.:format)                                                                     api/justifications#index
+                                         POST   /api/justifications(.:format)                                                                     api/justifications#create
+                       api_justification GET    /api/justifications/:id(.:format)                                                                 api/justifications#show
+                                         PATCH  /api/justifications/:id(.:format)                                                                 api/justifications#update
+                                         PUT    /api/justifications/:id(.:format)                                                                 api/justifications#update
+                                         DELETE /api/justifications/:id(.:format)                                                                 api/justifications#destroy
        api_internal_communications_users GET    /api/internal_communications_users(.:format)                                                      api/internal_communications_users#index
                                          POST   /api/internal_communications_users(.:format)                                                      api/internal_communications_users#create
         api_internal_communications_user GET    /api/internal_communications_users/:id(.:format)                                                  api/internal_communications_users#show
