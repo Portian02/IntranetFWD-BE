@@ -16,7 +16,6 @@ class User < ApplicationRecord
   validates :borndate, presence: true
   validates :role, presence: true
   validates :type_user_id, presence: true
-  validates :jti, presence: true, uniqueness: true
   belongs_to :type_user
   before_validation :set_default_password, on: :create
 
