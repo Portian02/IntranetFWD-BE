@@ -1,10 +1,12 @@
 class Api::UsersController < ApplicationController
   before_action :set_user, only: %i[ show update destroy ]
+
+
 #  before_action :auth_user, only: %i[ create update destroy ]
+
   # GET /tasks
   def index
     @user = User.all
-
     render json: @user
   end
 
@@ -16,7 +18,6 @@ class Api::UsersController < ApplicationController
   # POST /tasks
   def create
     @user = User.new(user_params)
-
     if @user.save
       render json: @user, status: :created
     else
@@ -36,7 +37,7 @@ class Api::UsersController < ApplicationController
 
   def update_password
 
-    @user = User.params[:id] #HACER EL CAMBIO DEL PARAMETRO
+    @user = User.find(params[:id]) #HACER EL CAMBIO DEL PARAMETRO
 
     if params[:user][:password].present? && params[:user][:password_confirmation].present?
       if @user.update(user_params)
