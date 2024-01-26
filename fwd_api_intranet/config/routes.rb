@@ -11,10 +11,7 @@ Rails.application.routes.draw do
     resources :justifications
     resources :internal_communications_users
     resources :documents_storages
-
-    # resources :sessions, only: [:create, :destroy] #añadir edit mas adelante
-    # resources :registrations, only: [:create]
-
+   
   end
 
   namespace :auth do
