@@ -1,7 +1,4 @@
 FactoryBot.define do
-  factory :documents_type do
-    sequence(:name) { |n| "Document Type #{n}" }
-  end
 
   factory :documents_storage do
     sequence(:name) { |n| "Document #{n}" }

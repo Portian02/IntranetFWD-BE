@@ -55,7 +55,7 @@ RSpec.describe JustificationType, type: :model do
     expect(justification_type).to be_valid
   end
 
-  
+
 
   it 'is valid with a description of 1000 characters' do
     justification_type.description = "a" * 1000

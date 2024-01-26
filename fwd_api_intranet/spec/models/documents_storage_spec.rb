@@ -35,21 +35,3 @@ RSpec.describe DocumentsStorage, type: :model do
   end
 end
 
-RSpec.describe DocumentsType, type: :model do
-  describe 'validations' do
-    it 'is valid with valid attributes' do
-      expect(build(:documents_type)).to be_valid
-    end
-
-    it 'is invalid without a name' do
-      expect(build(:documents_type, name: nil)).to be_invalid
-    end
-  end
-
-  describe 'associations' do
-    it 'has many documents storage' do
-      association = described_class.reflect_on_association(:documents_storages)
-      expect(association.macro).to eq(:has_many)
-    end
-  end
-end
