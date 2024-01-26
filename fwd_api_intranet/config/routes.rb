@@ -11,7 +11,9 @@ Rails.application.routes.draw do
     resources :justifications
     resources :internal_communications_users
     resources :documents_storages
-   
+    resources :justification_types
+    resources :admonition_types
+    resources :documents_types
   end
 
   namespace :auth do
