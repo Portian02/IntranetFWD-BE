@@ -3,7 +3,7 @@ require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 require 'factory_bot_rails'
-
+require 'shoulda/matchers'
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
@@ -47,6 +47,14 @@ RSpec.configure do |config|
   # based on their file location, for example enabling you to call `get` and
   # `post` in specs under `spec/controllers`.
   #
+  # rails_helper.rb
+  Shoulda::Matchers.configure do |config|
+    config.integrate do |with|
+      with.test_framework :rspec
+      with.library :rails
+    end
+  end
+
   # You can disable this behaviour by removing the line below, and instead
   # explicitly tag your specs with their type, e.g.:
   #

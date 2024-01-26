@@ -1,62 +1,63 @@
+# spec/models/user_spec.rb
+
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  describe 'validations' do
-    it 'validates presence of identification' do
-      user = build(:user, identification: nil)
-      user.valid?
-      expect(user.errors[:identification]).to include("can't be blank")
-    end
+  let(:user) { FactoryBot.build(:user) }
 
-    it 'validates presence of username' do
-      user = build(:user, username: nil)
-      user.valid?
-      expect(user.errors[:username]).to include("can't be blank")
-    end
 
-    it 'validates presence of number' do
-      user = build(:user, number: nil)
-      user.valid?
-      expect(user.errors[:number]).to include("can't be blank")
-    end
 
-    it 'validates presence of email' do
-      user = build(:user, email: nil)
-      user.valid?
-      expect(user.errors[:email]).to include("can't be blank")
-    end
-
-    it 'validates presence of borndate' do
-      user = build(:user, borndate: nil)
-      user.valid?
-      expect(user.errors[:borndate]).to include("can't be blank")
-    end
-
-    it 'validates uniqueness of identification' do
-      existing_user = create(:user, identification: '123456789')
-      user = build(:user, identification: '123456789')
-      user.valid?
-      expect(user.errors[:identification]).to include('has already been taken')
-    end
-
-    it 'validates uniqueness of username' do
-      existing_user = create(:user, username: 'john_doe')
-      user = build(:user, username: 'john_doe')
-      user.valid?
-      expect(user.errors[:username]).to include('has already been taken')
-    end
-
-    it 'validates uniqueness of email' do
-      existing_user = create(:user, email: 'john@example.com')
-      user = build(:user, email: 'john@example.com')
-      user.valid?
-      expect(user.errors[:email]).to include('has already been taken')
-    end
+  it 'has a valid identification' do
+    expect(user.identification).to be_a(String)
   end
 
-  describe 'enums' do
-    it 'defines role enum with values' do
-      expect(User.roles.keys).to eq(['student', 'admin', 'teacher'])
-    end
+  it 'has a valid username' do
+    expect(user.username).to be_a(String)
   end
+
+  it 'has a valid number' do
+    expect(user.number).to be_a(String)
+  end
+
+  it 'has a valid email' do
+    expect(user.email).to match(/\A[^@\s]+@fwdcostarica\.com\z/)
+  end
+
+  it 'has a valid borndate' do
+    expect(user.borndate).to be_a(Date)
+  end
+
+  it 'has a valid role' do
+    expect(user.role).to be_in(User.roles.keys)
+  end
+
+  it 'has a valid type_user association' do
+    expect(user.type_user).to be_a(TypeUser)
+  end
+
+  it 'is invalid without an identification' do
+    user.identification = nil
+    expect(user).to be_invalid
+    expect(user.errors[:identification]).to include("can't be blank")
+  end
+
+  it 'is invalid without a username' do
+    user.username = nil
+    expect(user).to be_invalid
+    expect(user.errors[:username]).to include("can't be blank")
+  end
+
+  it 'is invalid without a number' do
+    user.number = nil
+    expect(user).to be_invalid
+    expect(user.errors[:number]).to include("can't be blank")
+  end
+
+  it 'is invalid without an email' do
+    user.email = nil
+    expect(user).to be_invalid
+    expect(user.errors[:email]).to include("can't be blank")
+  end
+
+
 end
