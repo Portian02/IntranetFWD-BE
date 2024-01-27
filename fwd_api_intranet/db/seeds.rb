@@ -8,8 +8,6 @@ documentsTypes =[
 {type_name: "Admonition", description: "this is a admonition document"},
 {type_name: "Justification", description: "this is a justification document"},
 { type_name: "Regulations", description: "this is a regulations document"},
-
-
 ]
 
 DocumentsType.create(documentsTypes)

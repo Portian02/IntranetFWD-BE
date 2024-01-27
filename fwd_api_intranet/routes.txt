@@ -53,6 +53,12 @@
                                          PATCH  /api/internal_communications_users/:id(.:format)                                                  api/internal_communications_users#update
                                          PUT    /api/internal_communications_users/:id(.:format)                                                  api/internal_communications_users#update
                                          DELETE /api/internal_communications_users/:id(.:format)                                                  api/internal_communications_users#destroy
+                  api_documents_storages GET    /api/documents_storages(.:format)                                                                 api/documents_storages#index
+                                         POST   /api/documents_storages(.:format)                                                                 api/documents_storages#create
+                   api_documents_storage GET    /api/documents_storages/:id(.:format)                                                             api/documents_storages#show
+                                         PATCH  /api/documents_storages/:id(.:format)                                                             api/documents_storages#update
+                                         PUT    /api/documents_storages/:id(.:format)                                                             api/documents_storages#update
+                                         DELETE /api/documents_storages/:id(.:format)                                                             api/documents_storages#destroy
                    new_auth_user_session GET    /auth/users/sign_in(.:format)                                                                     auth/sessions#new
                        auth_user_session POST   /auth/users/sign_in(.:format)                                                                     auth/sessions#create
                destroy_auth_user_session DELETE /auth/users/sign_out(.:format)                                                                    auth/sessions#destroy

@@ -1,24 +1,16 @@
-# spec/factories/users.rb
 FactoryBot.define do
   factory :user do
-    sequence(:identification) { |n| "ID#{n}" }
-    sequence(:username) { |n| "user#{n}" }
-    sequence(:number) { |n| "Number#{n}" }
-    sequence(:email) { |n| "user#{n}@example.com" }
-    borndate { Faker::Date.birthday(min_age: 18, max_age: 65) }
-    password { 'password123' }
-    password_confirmation { 'password123' }
+    identification { Faker::IDNumber.unique.south_african_id_number }
+    username { Faker::Internet.unique.username }
+    number { Faker::PhoneNumber.unique.phone_number }
+    email { Faker::Internet.unique.email(domain: 'fwdcostarica.com') }
+    borndate { Faker::Date.birthday(min_age: 18, max_age: 65).strftime('%Y-%m-%d') }
+    role { User.roles.keys.sample }
+    association :type_user, factory: :type_user
 
-    trait :student do
-      role { :student }
-    end
 
-    trait :admin do
-      role { :admin }
-    end
-
-    trait :teacher do
-      role { :teacher }
+    after(:build) do |user|
+      user.password ||= 'fwd1234'
     end
   end
 end

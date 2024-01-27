@@ -2,7 +2,7 @@
 
 class Auth::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
- # before_action :authenticate_user!, only: [:logout]
+#   before_action :authenticate_user!, only: [:logout]
   respond_to :json
 
   def singup
@@ -32,7 +32,7 @@ class Auth::SessionsController < Devise::SessionsController
   def respond_with(resource, _opts = {})
     render json: resource
   end
-  
+
   def respond_to_on_destroy
     render json: { message: "Logged out." }
   end
@@ -40,7 +40,7 @@ class Auth::SessionsController < Devise::SessionsController
   def user_params
     params.permit(:username, :email, :password, :password_confirmation, :identification, :number, :borndate, :type_user_id, :role)
   end
-  
+
   def respond_with(resource, _opts = {})
     render json: resource
   end
