@@ -24,10 +24,10 @@ module FwdApiIntranet
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
 
-    config.generator do |g|
-      g.test_framework(:rspec,
-      fixture: false)
-    end
+  # #  config.generator do |g|
+  # #    g.test_framework(:rspec,
+  # #    fixture: false)
+  # #   end
 
   end
 end
