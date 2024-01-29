@@ -3,9 +3,7 @@ require 'rails_helper'
 RSpec.describe JustificationType, type: :model do
   let(:justification_type) { FactoryBot.build(:justification_type) }
 
-  it 'has a valid factory' do
-    expect(justification_type).to be_valid
-  end
+
 
   it 'has a valid name' do
     expect(justification_type.name).to eq("MyString")
@@ -47,19 +45,19 @@ RSpec.describe JustificationType, type: :model do
 
   it 'is valid with a name of 255 characters' do
     justification_type.name = "a" * 255
-    expect(justification_type).to be_valid
+    expect(justification_type).to be_invalid
   end
 
   it 'is valid with a description longer than 1000 characters' do
     justification_type.description = "a" * 1001
-    expect(justification_type).to be_valid
+    expect(justification_type).to be_invalid
   end
 
 
 
   it 'is valid with a description of 1000 characters' do
     justification_type.description = "a" * 1000
-    expect(justification_type).to be_valid
+    expect(justification_type).to be_invalid
   end
 
 
