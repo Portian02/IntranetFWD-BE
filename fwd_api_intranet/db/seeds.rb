@@ -4,10 +4,4 @@
 
 # User.create(identification: "604360071", username: "AdminSu", number: "87690098", email: "admin@gmail.com", borndate:"02/08/1992", password:"123456", password_confirmation:"123456",type_user_id:"3", role: "admin" )
 
-documentsTypes =[
-{type_name: "Admonition", description: "this is a admonition document"},
-{type_name: "Justification", description: "this is a justification document"},
-{ type_name: "Regulations", description: "this is a regulations document"},
-]
 
-DocumentsType.create(documentsTypes)

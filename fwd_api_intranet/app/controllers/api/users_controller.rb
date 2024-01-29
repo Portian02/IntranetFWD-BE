@@ -36,7 +36,6 @@ class Api::UsersController < ApplicationController
 
 
   def update_password
-
     @user = User.find(params[:id]) #HACER EL CAMBIO DEL PARAMETRO
 
     if params[:user][:password].present? && params[:user][:password_confirmation].present?
