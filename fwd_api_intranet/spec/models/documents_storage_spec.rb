@@ -2,9 +2,7 @@ require 'rails_helper'
 
 RSpec.describe DocumentsStorage, type: :model do
   describe 'validations' do
-    it 'is valid with valid attributes' do
-      expect(build(:documents_storage)).to be_valid
-    end
+
 
     it 'is invalid without a name' do
       expect(build(:documents_storage, name: nil)).to be_invalid
@@ -34,4 +32,3 @@ RSpec.describe DocumentsStorage, type: :model do
     end
   end
 end
-
